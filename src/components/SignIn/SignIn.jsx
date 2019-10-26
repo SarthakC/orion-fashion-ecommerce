@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './SignIn.scss';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+
+import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 export class SignIn extends Component {
   constructor() {
@@ -45,8 +49,12 @@ export class SignIn extends Component {
             handleChange={this.handleChange}
             required
           />
-
-          <CustomButton type='submit'>Sign In</CustomButton>
+          <div className='buttons'>
+            <CustomButton type='submit'>Sign In</CustomButton>
+            <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+              <FontAwesomeIcon icon={faGoogle} /> Sign In With Google
+            </CustomButton>
+          </div>
         </form>
       </div>
     );
