@@ -75,7 +75,7 @@ export class SignUp extends Component {
             type='password'
             name='password'
             value={password}
-            label='PassWord'
+            label='Password'
             onChange={this.handleChange}
             required
           />
