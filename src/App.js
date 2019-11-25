@@ -8,10 +8,12 @@ import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import ShopPage from './pages/Shop/Shop';
 import SignInAndSignUpPage from './pages/SignInAndSignUp/SignInAndSignUp';
+
 import Header from './components/Header/Header';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { selectCurrentUser } from './redux/user/userSelectors';
 import { createStructuredSelector } from 'reselect';
+import CheckoutPage from './pages/Checkout/Checkout';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -57,6 +59,7 @@ class App extends React.Component {
               )
             }
           ></Route>
+          <Route exact path='/checkout' component={CheckoutPage}></Route>
         </Switch>
       </div>
     );
