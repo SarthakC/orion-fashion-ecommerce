@@ -18,7 +18,7 @@ export class SignIn extends Component {
     };
   }
 
-  handleSubmit = async (event) => {
+  handleSubmit = async event => {
     event.preventDefault();
     const { email, password } = this.state;
 
@@ -30,7 +30,7 @@ export class SignIn extends Component {
     }
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     const { value, name } = event.target;
     this.setState({ [name]: value });
   };
@@ -60,7 +60,9 @@ export class SignIn extends Component {
           <div className='buttons'>
             <CustomButton type='submit'>Sign In</CustomButton>
             <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-              <FontAwesomeIcon icon={faGoogle} /> Sign In With Google
+              <span>
+                <FontAwesomeIcon icon={faGoogle} /> Sign In With Google
+              </span>
             </CustomButton>
           </div>
         </form>
