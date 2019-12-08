@@ -6,8 +6,11 @@ import CustomButton from '../CustomButton/CustomButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
-import { auth } from 'firebase';
-import { googleSignInStart } from '../../redux/user/userActions';
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from '../../redux/user/userActions';
+
 export class SignIn extends Component {
   constructor() {
     super();
@@ -20,14 +23,9 @@ export class SignIn extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+    const { emailSignInStart } = this.props;
     const { email, password } = this.state;
-
-    try {
-      await auth().signInWithEmailAndPassword(email, password);
-      this.setState({ email: '', password: '' });
-    } catch (error) {
-      console.error(error);
-    }
+    emailSignInStart(email, password);
   };
 
   handleChange = event => {
@@ -78,6 +76,8 @@ export class SignIn extends Component {
 
 const mapDispatchToProps = dispatch => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) =>
+    dispatch(emailSignInStart({ email, password })),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);
