@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { reject } from 'q';
 
 const config = {
   apiKey: 'AIzaSyADJVrMGsVI3Al-PQF2b1imWM8Q1Zmhb_A',
@@ -70,6 +71,15 @@ export const convertCollectionsSnapshotToMap = collection => {
     accumulator[collection.title.toLowerCase()] = collection;
     return accumulator;
   }, {});
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 };
 
 export const auth = firebase.auth();
