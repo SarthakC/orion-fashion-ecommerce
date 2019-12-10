@@ -9,7 +9,7 @@ export const CollectionItemContainer = styled.div`
   align-items: center;
   position: relative;
   &:hover {
-    .image {
+     
       opacity: 0.8;
     }
     button {
@@ -20,7 +20,7 @@ export const CollectionItemContainer = styled.div`
   @media screen and (max-width: 800px) {
     width: 40vw;
     &:hover {
-      .image {
+       
         opacity: unset;
       }
       button {
