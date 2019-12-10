@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import './SignIn.scss';
+
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +10,12 @@ import {
   googleSignInStart,
   emailSignInStart,
 } from '../../redux/user/userActions';
+
+import {
+  SignInContainer,
+  SignInTitle,
+  ButtonsBarContainer,
+} from './SignInStyles';
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const [userCredentials, setCredentials] = useState({
@@ -30,8 +36,8 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   };
 
   return (
-    <div className='sign-in'>
-      <h2>I already have an account</h2>
+    <SignInContainer>
+      <SignInTitle>I already have an account</SignInTitle>
       <span>Sign in with your email and password</span>
 
       <form action='' method='post' onSubmit={handleSubmit}>
@@ -51,7 +57,7 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           handleChange={handleChange}
           required
         />
-        <div className='buttons'>
+        <ButtonsBarContainer>
           <CustomButton type='submit'>Sign In</CustomButton>
           <CustomButton
             type='button'
@@ -62,9 +68,9 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
               <FontAwesomeIcon icon={faGoogle} /> Sign In With Google
             </span>
           </CustomButton>
-        </div>
+        </ButtonsBarContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
