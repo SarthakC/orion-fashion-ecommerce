@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import Directory from '../../components/Directory/Directory';
 import { HomePageContainer } from './HomePage.styles';
 
 const HomePage = () => {
   return (
     <HomePageContainer>
-      <Directory />
+      <Profiler
+        id='Direcotry'
+        onRender={(id, phase, actualDuration) => {
+          console.log({ id, phase, actualDuration });
+        }}
+      >
+        <Directory />
+      </Profiler>
     </HomePageContainer>
   );
 };
