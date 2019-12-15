@@ -10,7 +10,7 @@ import {
   CollectionItemsContainer,
 } from './CollectionStyles';
 
-const Collection = ({ collection }) => {
+export const Collection = ({ collection }) => {
   const { title, items } = collection;
   return (
     <CollectionPageContainer>

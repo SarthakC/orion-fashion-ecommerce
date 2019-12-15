@@ -18,30 +18,26 @@ import {
 
 import { signOutStart } from '../../redux/user/userActions';
 
-const Header = ({ currentUser, hidden, signOutStart }) => {
-  return (
-    <HeaderContainer>
-      <LogoContainer to='/'>
-        <StyledLogo />
-      </LogoContainer>
-      <OptionsContainer>
-        <OptionLink to='/shop'>SHOP</OptionLink>
-        {/* <OptionLink to='/contact'>CONTACT</OptionLink> */}
-        {currentUser ? (
-          <OptionLink as='div' className='option' onClick={signOutStart}>
-            SIGN OUT
-          </OptionLink>
-        ) : (
-          <OptionLink className='option' to='/signin'>
-            SIGN IN
-          </OptionLink>
-        )}
-        <CartIcon />
-      </OptionsContainer>
-      {hidden ? null : <CartDropdown />}
-    </HeaderContainer>
-  );
-};
+export const Header = ({ currentUser, hidden, signOutStart }) => (
+  <HeaderContainer>
+    <LogoContainer to='/'>
+      <StyledLogo />
+    </LogoContainer>
+    <OptionsContainer>
+      <OptionLink to='/shop'>SHOP</OptionLink>
+      <OptionLink to='/shop'>CONTACT</OptionLink>
+      {currentUser ? (
+        <OptionLink as='div' to='#' onClick={signOutStart}>
+          SIGN OUT
+        </OptionLink>
+      ) : (
+        <OptionLink to='/signin'>SIGN IN</OptionLink>
+      )}
+      <CartIcon />
+    </OptionsContainer>
+    {hidden ? null : <CartDropdown />}
+  </HeaderContainer>
+);
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,

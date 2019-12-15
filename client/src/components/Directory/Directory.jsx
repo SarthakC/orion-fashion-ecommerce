@@ -8,7 +8,7 @@ import { DirectoryMenuContainer } from './DirectoryStyles';
 
 import { selectDirectorySections } from '../../redux/directory/directorySelector';
 
-const Directory = ({ sections }) => (
+export const Directory = ({ sections }) => (
   <DirectoryMenuContainer>
     {sections.map(({ id, ...otherSectionProps }) => (
       <MenuItem key={id} {...otherSectionProps} />

@@ -16,7 +16,7 @@ import {
 
 import { selectCartItems } from '../../redux/cart/cartSelectors';
 
-const CartDropdown = ({ cartItems, history, dispatch }) => {
+export const CartDropdown = ({ cartItems, history, dispatch }) => {
   return (
     <CartDropdownContainer>
       <CartItemsContainer>
